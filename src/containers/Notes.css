@@ -43,6 +43,9 @@ button {
     .notes-container {
         width: 100vw;
     }
+    .notes-content{
+        width: 80%;
+    }
     .notes {
         justify-content: center;
     }

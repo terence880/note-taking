@@ -16,7 +16,6 @@ export const addNote = (newNote) => {
                     ...newNote,
                     name: res.data.name
                 }
-                console.log(newNoteWithName)
                 dispatch(addNoteSuccess(newNoteWithName))
             })
             .catch(err => {
@@ -25,14 +24,26 @@ export const addNote = (newNote) => {
     }
 }
 
-export const editNote = () => {
+export const editNoteSuccess = (editNote) =>{
     return {
-        type: actionTypes.EDIT_NOTE
+        type: actionTypes.EDIT_NOTE_SUCCESS,
+        editNote: editNote
+    }
+}
+
+export const editNote = (editNote, editName) => {
+    return dispatch => {
+        axios.put('/notes/' + editName + '.json', editNote)
+            .then(
+                dispatch(editNoteSuccess(editNote))
+            )
+            .catch(err => {
+                console.log(err);
+            })
     }
 }
 
 export const deleteNoteSuccess = (remainNotes) => {
-    console.log(remainNotes);
 
     return {
         type: actionTypes.DELETE_NOTE_SUCCESS,
@@ -71,13 +82,11 @@ export const fetchNote = () => {
                         name: key
                     });
                 }
-                console.log(fetchedOrders);
 
                 dispatch(fetchNoteSuccess(fetchedOrders))
             })
             .catch(err => {
                 console.log(err)
-                // dispatch(err)
             })
     }
 }

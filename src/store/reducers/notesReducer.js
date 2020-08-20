@@ -22,9 +22,12 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 notes: action.remainNote
             }
-        case actionTypes.EDIT_NOTE:
+        case actionTypes.EDIT_NOTE_SUCCESS:
+            const editNoteArray = []
+            editNoteArray.push(action.editNote)
             return {
-                ...state
+                ...state,
+                notes: state.notes.map(obj => editNoteArray.find(o => o.name === obj.name) || obj)
             }
         case actionTypes.FETCH_NOTE_SUCCESS:
             return {
