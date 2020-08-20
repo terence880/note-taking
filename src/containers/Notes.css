@@ -1,0 +1,49 @@
+.notes-body,
+.notes,
+.add-notes {
+    display: flex;
+}
+
+.notes-topic {
+    display: flex;
+    justify-content: center;
+}
+
+.notes-container {
+    width: 70vw;
+}
+
+.notes {
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.add-notes {
+    width: 30vw;
+    flex-direction: column;
+}
+
+textarea {
+    height: 10vh;
+    margin: 16px;
+}
+
+button {
+    margin: 16px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .notes-body {
+        flex-direction: column;
+    }
+    .add-notes {
+        width: 100vw;
+        align-items: center;
+    }
+    .notes-container {
+        width: 100vw;
+    }
+    .notes {
+        justify-content: center;
+    }
+}
